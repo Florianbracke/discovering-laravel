@@ -27,8 +27,12 @@ Route::get('/contact ', function () {
 
 use App\Http\Controllers\FormController;
 
-Route::view('/form', 'form');
-Route::post('/form', [FormController::class, 'getData']);
+// Route::view('/form', 'form');
 
+Route::get('/form', function () {
+    return view('form');});
+
+Route::post('/form', [FormController::class, 'formValidation']);
+Route::post('/form', [FormController::class, 'insertDB']);
 
 Route::get('/user ', [App\Http\Controllers\Controller\HomeController::class, 'render']);
